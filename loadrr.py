@@ -4,7 +4,7 @@ import requests
 
 # Function to get cell tower information from OpenCelliD API
 def get_cell_tower_info(lat, lon):
-    url = f"https://eu1.unwiredlabs.com/v2/process.php?key=YOUR_API_KEY&lat={lat}&lon={lon}&format=json"
+    url = f"https://eu1.unwiredlabs.com/v2/process.php?key=0402238ccdb6b3b87f0535b5f317178c&lat={lat}&lon={lon}&format=json"
     response = requests.get(url)
     if response.status_code == 200:
         data = response.json()
@@ -12,6 +12,8 @@ def get_cell_tower_info(lat, lon):
             return data['cells']
     return []
 
+userInput = userInput()
+print("Please enter your CSV file in the following format: coordinates.csv")
 # Read in the CSV file of coordinates
 df = pd.read_csv('coordinates.csv')
 
