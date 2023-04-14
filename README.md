@@ -1,56 +1,29 @@
 # loadrr
-Accepts coordinates and automates cellphone triangulation
+This script was developed with law enforcement as the end user due to the fact that they are one of the handful of legal authorities allowed to subpoena telephone providers for cellphone pings. At best this script serves as a quick resource to provide users with a common operating picture from the tactical perspective of an investigation. Similar scripts, programs, and actual commercial software do in fact exist, however, the majority fail at two basic principles: speed and simplicity.
 
-To use this program, replace YOUR_API_KEY with your OpenCelliD API key and make sure that you have a CSV file named coordinates.csv in the same directory as the Python script, with the latitude and longitude coordinates in separate columns labeled Latitude and Longitude, respectively.
+A local deputy sheriff investigating a crime will most likely never take the time to learn technical skills as typical law enforcement investigations have a dedicated timeline aligned with the prosecution team's goals. 'Loadrr' was developed to provide a quick and simple resource to plot latitude and longitude coordinates on a kml map (derived from subpoena returns) and prompt an upload to google earth to then enable the user to screenshot the results for additional analysis at a later date.
 
-This program uses the simplekml library to create the KML file for Google Earth and the pandas library to read in the CSV file of coordinates. It also uses the requests library to make HTTP requests to the OpenCelliD API to get cell tower information for each coordinate.
+One of the most frustrating issues I personally dealt with during my tenure at DEA was receiving a subpoena return for cellphone pings from telephone provider, loading the results into semi-complex commercial software, and wait for an eternity to see the pixelated results. Then I would tinker with google earth, knowing all of this could be automated. 
 
-After running this program, you can open the generated coordinates.kml file in Google Earth to view the placemarks for each coordinate and the cell tower information in the description.
+*STEPS FOR USE:*
 
-#!/usr/bin/
-import simplekml
-import pandas as pd
-import requests
+1A: DOES YOUR AGENCY ALLOW YOU TO RUN SCRIPTS? IF NO - GO 1B. IF YES - FOLLOW ADDITIONAL STEPS BELOW:
+1B: IS THERE A DEDICATED CRIMINAL ANALYST IN YOUR AGENCY? IF NO - REQUEST CLOUD VERSION OF PROGRAM HERE LOADRRCLOUD@CYBERSALOON.IO. IF YES - HAVE THEM FOLLOW ADDITIONAL STEPS BELOW:
 
-# Function to get cell tower information from OpenCelliD API
-#def get_cell_tower_info(lat, lon):
-#    url = f"https://eu1.unwiredlabs.com/v2/process.php?key=0402238ccdb6b3b87f0535b5f317178c&lat={lat}&lon={lon}&format=json"
- #   response = requests.get(url)
-  #  if response.status_code == 200:
-   #     data = response.json()
-    #    if 'error' not in data:
-     #       return data['cells']
-    #return []
+1. Ensure Python3 is installed
+    Windows PowerShell Command: python --version
 
-#userInput = userInput()
-print("Please enter your CSV file in the following format: coordinates.csv")
+2. Create new folder 
+    Add results of subpoena in .csv format. Colummn 1 will be "Latitude"; Colummn 2 will be "Longitude" 
+    (also attached a template)
 
-# Read in the CSV file of coordinates
-df = pd.read_csv('coordinates.csv')
+3. Download loadrr.py file in the same folder as your .csv with the coordinates
+    ensure both files exist in the same folder
 
-# Create a KML file to hold the placemarks
-kml = simplekml.Kml()
-#update kml file with user input of address long lat conversion
+4. Run the script
+    Windows Command Line Interface:
+    Windows Powershell:
 
-# Loop through each row in the CSV file and add a placemark to the KML file
-for index, row in df.iterrows():
-    # Add a placemark to the KML file for the coordinate
-    kml.newpoint(name=f"Coordinate {index+1}", coords=[(row['Longitude'], row['Latitude'])])
+5. Open Google Earth in an incognito window of your browser of choice and load your newly made kml file 
 
-# Save the KML file
-kml.save('coordinates.kml')
-
-
-# Loop through each row in the CSV file and add a placemark to the KML file
-#for index, colm in df.iterrows():
-    # Get the cell tower information for the coordinate
-    #cell_towers = get_cell_tower_info(colm['Latitude'], colm['Longitude'])
-    # Create a description for the placemark with the cell tower information
-    #description = "<b>Cell Towers:</b><br>"
-    #for tower in cell_towers:
-     #   description += f"  <i>ID:</i> {tower['cid']}<br>  <i>MCC:</i> {tower['mcc']}<br>  <i>MNC:</i> {tower['mnc']}<br><br>"
-    # Add a placemark to the KML file for the coordinate
-    #kml.newpoint(name=f"Coordinate {index+1}", coords=[(colm['Longitude'], colm['Latitude'])], description=description)
-
-# Save the KML file
-kml.save('coordinates.kml')
+6. Do not save the project, take a screenshot or manipulate the viewing range as needed.
