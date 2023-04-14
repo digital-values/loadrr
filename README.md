@@ -5,9 +5,10 @@ A local deputy sheriff investigating a crime will most likely never take the tim
 
 One of the most frustrating issues I personally dealt with during my tenure at DEA was receiving a subpoena return for cellphone pings from telephone provider, loading the results into semi-complex commercial software, and wait for an eternity to see the pixelated results. Then I would tinker with google earth, knowing all of this could be automated. 
 
-*STEPS FOR USE:*
+# STEPS FOR USE
 
 1A: DOES YOUR AGENCY ALLOW YOU TO RUN SCRIPTS? IF NO - GO 1B. IF YES - FOLLOW ADDITIONAL STEPS BELOW:
+
 1B: IS THERE A DEDICATED CRIMINAL ANALYST IN YOUR AGENCY? IF NO - REQUEST CLOUD VERSION OF PROGRAM HERE LOADRRCLOUD@CYBERSALOON.IO. IF YES - HAVE THEM FOLLOW ADDITIONAL STEPS BELOW:
 
 1. Ensure Python3 is installed
@@ -21,8 +22,7 @@ One of the most frustrating issues I personally dealt with during my tenure at D
     ensure both files exist in the same folder
 
 4. Run the script
-    Windows Command Line Interface:
-    Windows Powershell:
+    Windows Powershell: python3 loadrr.py
 
 5. Open Google Earth in an incognito window of your browser of choice and load your newly made kml file 
 
